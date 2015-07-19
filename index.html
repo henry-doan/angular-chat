@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html lang="en" ng-app="ui.bootstrap.demo">
+
+<head>
+
+
+    <title>Demo</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body ng-app="app">
+    <div class="container" ng-controller="myCtrl">
+
+        <div class="panel panel-default submit">
+            <div class="panel-body">
+                <input type="text" ng-model="newPost.author" placeholder="Author">
+                <br>
+                <textarea name="" id="" cols="30" rows="10" ng-model="newPost.body"></textarea>
+                <br>
+                <button class="btn btn-success" ng-click="submit()">SUBMIT</button>
+            </div>
+        </div>
+
+        <div class="panel panel-default chat">
+            <div class="panel-body">
+
+                <div class="panel panel-default" ng-repeat="post in messages">
+                    <div class="panel-heading" ng-bind="post.author">
+                    </div>
+                    <div class="panel-body">
+                        {{ post.body}}
+                    </div>
+                </div>
+                <!-- Alert -->
+                <div ng-controller="AlertDemoCtrl">
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                    <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
+                </div>
+                <!-- Collapse -->
+                <div ng-controller="CollapseDemoCtrl">
+                    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+                    <hr>
+                    <div collapse="isCollapsed">
+                        <div class="well well-lg">Some content</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript" scr="app.js"></script>
+
+</html>
